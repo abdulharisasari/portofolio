@@ -315,13 +315,10 @@
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div class="container">
-
         <div class="section-title">
           <h2>Contact</h2>
         </div>
-
         <div class="row" data-aos="fade-in">
-
           <div class="col-lg-5 d-flex align-items-stretch">
             <div class="info">
               <div class="address">
@@ -382,51 +379,13 @@
             </form>
           </div>
 
-          <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+          <script type="text/javascript" src="https://cdn.emailjs.com/sdk/3.2/email.min.js"></script>
           <script type="text/javascript">
-            function sendEmail() {
-              var name = $("#name");
-              var email = $("#email");
-              var subject = $("#subject");
-              var body = $("#body");
-
-              if (isNotEmpty(name) && isNotEmpty(email) && isNotEmpty(subject) && isNotEmpty(body)) {
-                $('.loading').show(); // Menampilkan loading
-
-                $.ajax({
-                  url: 'sendEmail.php',
-                  method: 'POST',
-                  dataType: 'json',
-                  data: {
-                    name: name.val(),
-                    email: email.val(),
-                    subject: subject.val(),
-                    body: body.val()
-                  },
-                  success: function (response) {
-                    $('#myForm')[0].reset();
-                    $('.loading').hide(); // Sembunyikan loading
-                    $('.error-message').hide(); // Sembunyikan error message jika ada
-                    $('.sent-message').show(); // Tampilkan pesan sukses
-                  },
-                  error: function () {
-                    $('.loading').hide(); // Sembunyikan loading
-                    $('.error-message').text("Something went wrong. Please try again.").show(); // Tampilkan pesan error
-                  }
-                });
-              }
-            }
-
-            function isNotEmpty(caller) {
-              if (caller.val() == "") {
-                caller.css('border', '1px solid red');
-                return false;
-              } else {
-                caller.css('border', '');
-              }
-              return true;
-            }
+            (function () {
+              emailjs.init("3NXq8DitexTPeJvF4");
+            })();
           </script>
+
 
 
         </div>
